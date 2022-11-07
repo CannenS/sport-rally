@@ -38,7 +38,7 @@ function Player() {
   }
 
   return (
-    <main>
+    <main className="main">
       <div className="nav">
         <img src={logo} alt="" className="logo" />
         <Link to="/" style={{ textDecoration: "none" }}>
@@ -78,9 +78,14 @@ function Player() {
                   <p>
                     <span>Birthday</span> : {born}
                   </p>
+                  <p>
+                    <span>Height</span> : {height}
+                  </p>
                 </div>
               </div>
-              <div className="info-text"></div>
+              <div className="info-text">
+                <p>{info}</p>
+              </div>
             </div>
           );
         })}

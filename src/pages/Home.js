@@ -64,13 +64,22 @@ function Home() {
           <h1>Is Loading...</h1>
         ) : (
           players.map((player) => {
-            const { idPlayer: id, strPlayer: name, strThumb: image } = player;
+            const {
+              idPlayer: id,
+              strPlayer: name,
+              strThumb: image,
+              strDescriptionEN: info,
+            } = player;
 
-            if (image) {
+            if (image && info) {
               return (
                 <div className="player-card">
                   <img src={image} alt={name} />
-                  <Link to={`/player/${id}`} onClick={() => console.log("dog")}>
+                  <Link
+                    to={`/player/${id}`}
+                    onClick={() => console.log("dog")}
+                    className="name-link"
+                  >
                     {name}
                   </Link>
                 </div>
