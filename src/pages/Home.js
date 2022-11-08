@@ -7,6 +7,7 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [players, setPlayers] = useState([]);
   const [query, setQuery] = useState("");
+  const [error, setError] = useState(false);
 
   const url = "https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=";
 
@@ -16,11 +17,17 @@ function Home() {
     try {
       const response = await fetch(`${url}${searchValue}`);
       const data = await response.json();
-      console.log(data.player);
-      setPlayers(data.player);
+      console.log(data);
+
+      if (data.player) {
+        setPlayers(data.player);
+      } else {
+        setError(true);
+      }
       setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setError(true);
     }
   };
 
@@ -28,6 +35,14 @@ function Home() {
     e.preventDefault();
     fetchPlayers(query);
   };
+
+  if (error) {
+    return (
+      <main className="error-page">
+        <h1>Opps. There was an error! Please try your search again.</h1>
+      </main>
+    );
+  }
 
   return (
     <main>
