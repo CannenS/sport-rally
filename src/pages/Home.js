@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./tradeMark.png";
 import Player from "./Player";
+import ReactDOM from "react-dom";
+import { FaSearch } from "react-icons/fa";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -70,7 +72,7 @@ function Home() {
             className="search-input"
           />
           <button type="submit" className="search-btn">
-            Submit
+            <FaSearch />
           </button>
         </form>
       </div>

@@ -83,7 +83,7 @@
 }
 
 .search-form {
-  width: 16rem;
+  width: 15rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,6 +105,8 @@
   border: none;
   cursor: pointer;
   transition: transform 0.2s linear;
+  font-size: 1.25rem;
+  color: rgb(35, 34, 34);
 }
 
 .search-btn:hover {
@@ -208,7 +210,6 @@
   width: 50%;
   height: 12.5rem;
   padding: 0.5rem;
-
   margin-right: 2rem;
 }
 
