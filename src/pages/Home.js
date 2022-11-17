@@ -27,10 +27,15 @@ function Home() {
         setError(true);
       }
       setIsLoading(false);
+      setQuery("");
     } catch (error) {
       console.log(error);
       setError(true);
     }
+  };
+
+  const refreshPage = () => {
+    window.location.reload();
   };
 
   const handleSubmit = (e) => {
@@ -42,6 +47,10 @@ function Home() {
     return (
       <main className="error-page">
         <h1>Opps. There was an error! Please try your search again.</h1>
+
+        <button className="btn" onClick={() => setError(false)}>
+          Back Home
+        </button>
       </main>
     );
   }
@@ -50,7 +59,11 @@ function Home() {
     <main>
       <div className="nav">
         <img src={logo} alt="" className="logo" />
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link
+          to="/"
+          onClick={() => refreshPage()}
+          style={{ textDecoration: "none" }}
+        >
           <p>Home</p>
         </Link>
         <Link to="/About" style={{ textDecoration: "none" }}>
@@ -63,22 +76,35 @@ function Home() {
           <p>Players</p>
         </Link>
       </div>
+
       <div className="form-box">
-        <form className="search-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="search-input"
-          />
-          <button type="submit" className="search-btn">
-            <FaSearch />
-          </button>
-        </form>
+        {players.length === 0 && !isLoading && <h1>/Search/</h1>}
+        {isLoading ? null : (
+          <form
+            className={
+              players.length === 0 ? "search-form " : "search-form active"
+            }
+            onSubmit={handleSubmit}
+          >
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="search-input"
+            />
+            <button type="submit" className="search-btn">
+              <FaSearch />
+            </button>
+          </form>
+        )}
       </div>
       <div className="results-box">
         {isLoading ? (
-          <h1>Is Loading...</h1>
+          <h1 className="load">
+            Is Loading<span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </h1>
         ) : (
           players.map((player) => {
             const {
