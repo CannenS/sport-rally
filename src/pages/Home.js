@@ -4,6 +4,7 @@ import logo from "./tradeMark.png";
 import Player from "./Player";
 import ReactDOM from "react-dom";
 import { FaSearch } from "react-icons/fa";
+import Nav from "../components/Nav";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,25 +58,7 @@ function Home() {
 
   return (
     <main>
-      <div className="nav">
-        <img src={logo} alt="" className="logo" />
-        <Link
-          to="/"
-          onClick={() => refreshPage()}
-          style={{ textDecoration: "none" }}
-        >
-          <p>Home</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>About</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>Pages</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>Players</p>
-        </Link>
-      </div>
+      <Nav />
 
       <div className="form-box">
         {players.length === 0 && !isLoading && <h1>/Search/</h1>}

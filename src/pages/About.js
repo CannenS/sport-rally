@@ -1,25 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./tradeMark.png";
+import Nav from "../components/Nav";
 
 function About() {
   return (
     <main>
-      <div className="nav">
-        <img src={logo} alt="" className="logo" />
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <p>Home</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>About</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>Pages</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>Players</p>
-        </Link>
-      </div>
+      <Nav />
       <section className="about">
         <h1>/About Us/</h1>
         <article className="about-text">

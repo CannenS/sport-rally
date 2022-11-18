@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Home from "./Home";
 import logo from "./tradeMark.png";
+import Nav from "../components/Nav";
 
 function Player() {
   const { id } = useParams();
@@ -39,21 +40,7 @@ function Player() {
 
   return (
     <main className="main">
-      <div className="nav">
-        <img src={logo} alt="" className="logo" />
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <p>Home</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>About</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>Pages</p>
-        </Link>
-        <Link to="/About" style={{ textDecoration: "none" }}>
-          <p>Players</p>
-        </Link>
-      </div>
+      <Nav />
       <div className="player-box">
         {player.map((item) => {
           const {
