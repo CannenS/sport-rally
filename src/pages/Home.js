@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./tradeMark.png";
 import Player from "./Player";
+import Results from "../components/Results";
 import ReactDOM from "react-dom";
 import { FaSearch } from "react-icons/fa";
 import Nav from "../components/Nav";
@@ -81,41 +82,7 @@ function Home() {
           </form>
         )}
       </div>
-      <div className="results-box">
-        {isLoading ? (
-          <h1 className="load">
-            Is Loading<span>.</span>
-            <span>.</span>
-            <span>.</span>
-          </h1>
-        ) : (
-          players.map((player) => {
-            const {
-              idPlayer: id,
-              strPlayer: name,
-              strThumb: image,
-              strDescriptionEN: info,
-            } = player;
-
-            if (image && info) {
-              return (
-                <div className="player-card">
-                  <img src={image} alt={name} />
-                  <Link
-                    to={`/player/${id}`}
-                    onClick={() => console.log("dog")}
-                    className="name-link"
-                  >
-                    {name}
-                  </Link>
-                </div>
-              );
-            } else {
-              return;
-            }
-          })
-        )}
-      </div>
+      <Results players={players} isLoading={isLoading} />
     </main>
   );
 }
