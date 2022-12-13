@@ -4,8 +4,8 @@ import logo from "./tradeMark.png";
 import Player from "./Player";
 import Results from "../components/Results";
 import ReactDOM from "react-dom";
-import { FaSearch } from "react-icons/fa";
 import Nav from "../components/Nav";
+import Form from "../components/Form";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -61,27 +61,13 @@ function Home() {
     <main>
       <Nav />
 
-      <div className="form-box">
-        {players.length === 0 && !isLoading && <h1>/Search/</h1>}
-        {isLoading ? null : (
-          <form
-            className={
-              players.length === 0 ? "search-form " : "search-form active"
-            }
-            onSubmit={handleSubmit}
-          >
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="search-input"
-            />
-            <button type="submit" className="search-btn">
-              <FaSearch />
-            </button>
-          </form>
-        )}
-      </div>
+      <Form
+        handleSubmit={handleSubmit}
+        query={query}
+        players={players}
+        isLoading={isLoading}
+        setQuery={setQuery}
+      />
       <Results players={players} isLoading={isLoading} />
     </main>
   );
